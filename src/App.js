@@ -1,8 +1,9 @@
+import Router from './router/Routes';
 
 const App = () => {
   return (
     <div>
-      test
+      <Router />
     </div>
   );
 }
