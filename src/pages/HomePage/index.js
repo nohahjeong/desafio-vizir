@@ -1,5 +1,6 @@
 import { useForm } from '../../hooks/useForm';
 import { useHistory } from 'react-router-dom'
+import { validateForm } from '../../functions/validateForm';
 
 const HomePage = () => {
     const history = useHistory();
@@ -14,27 +15,7 @@ const HomePage = () => {
     const onSubmit = (event) => {
         event.preventDefault();
 
-        let alertMessage;
-
-        if (!form.plan) {
-            alertMessage = 'Selecione um plano.';
-        };
-
-        if (!form.time || form.time < 0) {
-            alertMessage = 'Informe um tempo válido.';
-        };
-
-        if (form.originCity === form.destinationCity) {
-            alertMessage = 'A cidade de origem e destino são iguais.';
-        };
-
-        if (!form.destinationCity) {
-            alertMessage = 'Selecione uma cidade de destino.';
-        };
-
-        if (!form.originCity) {
-            alertMessage = 'Selecione uma cidade de origem.';
-        };
+        const alertMessage = validateForm(form);
 
         if (alertMessage) {
             alert(alertMessage);
@@ -54,7 +35,7 @@ const HomePage = () => {
                     value={form.originCity}
                     name='originCity'
                 >
-                    <option value='' disabled selected>Selecione uma cidade</option>
+                    <option value='' disabled>Selecione uma cidade</option>
                     <option value='011'>São Paulo</option>
                     <option value='016'>Ribeirão Preto</option>
                     <option value='017'>São José do Rio Preto</option>
@@ -66,7 +47,7 @@ const HomePage = () => {
                     value={form.destinationCity}
                     name='destinationCity'
                 >
-                    <option value='' disabled selected>Selecione uma cidade</option>
+                    <option value='' disabled>Selecione uma cidade</option>
                     <option value='011'>São Paulo</option>
                     <option value='016'>Ribeirão Preto</option>
                     <option value='017'>São José do Rio Preto</option>
@@ -86,7 +67,7 @@ const HomePage = () => {
                     value={form.plan}
                     name='plan'
                 >
-                    <option value='' disabled selected>Selecione um plano</option>
+                    <option value='' disabled>Selecione um plano</option>
                     <option value='30'>FaleMais 30</option>
                     <option value='60'>FaleMais 60</option>
                     <option value='120'>FaleMais 120</option>
