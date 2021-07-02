@@ -2,6 +2,8 @@ export const formatToMoney = (value) => {
     if (isNaN(value)) {
         return value;
     } else {
-        return `$ ${value.toFixed(2)}`
-    }
+        return (
+            <p>R$ {value.toFixed(2)}</p>
+        );
+    };
 }

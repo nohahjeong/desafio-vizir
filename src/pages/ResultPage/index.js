@@ -1,8 +1,11 @@
 import { useHistory } from 'react-router-dom';
 import { getResultWithPlan } from '../../functions/getResultWithPlan';
 import { getResultWithoutPlan } from '../../functions/getResultWithoutPlan';
-import { setFeeRate } from '../../functions/setFeeRate'
+import { setFeeRate } from '../../functions/setFeeRate';
 import { formatToMoney } from '../../functions/formatToMoney';
+import Header from '../../components/Header';
+import { BodyContainer, CardsContainer, WithoutPlanCard, WithPlanCard } from './styles';
+import Button from '../../components/Button';
 
 const ResultPage = () => {
     const history = useHistory();
@@ -15,7 +18,7 @@ const ResultPage = () => {
 
     let resultWithoutPlan;
 
-    if (feeRate == 0) {
+    if (feeRate === 0) {
         resultWithPlan = '-';
 
         resultWithoutPlan = '-';
@@ -23,21 +26,29 @@ const ResultPage = () => {
         resultWithPlan = getResultWithPlan(data, feeRate);
 
         resultWithoutPlan = getResultWithoutPlan(data, feeRate);
-    }
+    };
 
     return (
         <div>
-            <button onClick={() => history.push('/')}>
-                Voltar
-            </button>
+            <Header />
 
-            <div>
-                Com FaleMais: {formatToMoney(resultWithPlan)}
-            </div >
+            <BodyContainer>
+                <CardsContainer>
+                    <WithoutPlanCard>
+                        <div>Sem FaleMais</div>
 
-            <div>
-                Sem FaleMais: {formatToMoney(resultWithoutPlan)}
-            </div >
+                        {formatToMoney(resultWithoutPlan)}
+                    </WithoutPlanCard>
+
+                    <WithPlanCard>
+                        <div>Com FaleMais</div>
+
+                        {formatToMoney(resultWithPlan)}
+                    </WithPlanCard>
+                </ CardsContainer>
+
+                <Button onClick={() => history.push('/')} text={'Calcular Novamente'} />
+            </BodyContainer>
         </div >
     );
 }
