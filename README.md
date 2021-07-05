@@ -8,6 +8,8 @@ Aplicação feita com:
 - `styled-components`: estilização
 - `jest`: testes
 
+Responsivo para telas de 420px.
+
 ## Aplicação
 
 Execute o script `'$ npm run start'` para acessar a página da aplicação.
