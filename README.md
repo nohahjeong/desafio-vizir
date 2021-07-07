@@ -1,6 +1,6 @@
 # Desafio técnico Vizir
 
-Site da empresa fictícia Telzir no qual o usuário pode calcular valores de ligações entre cidades de São Paulo (São Paulo, Ribeirão Preto, São José do Rio Preto e Presidente Prudente) e comparar com o valor com o plano FaleMais da empresa.
+Site da empresa fictícia Telzir no qual o usuário pode calcular valores de ligações entre cidades de São Paulo (São Paulo, Ribeirão Preto, São José do Rio Preto e Presidente Prudente) e comparar o valor sem e com o plano FaleMais da empresa.
 
 Aplicação feita com:
 - `React`: stack da aplicação
